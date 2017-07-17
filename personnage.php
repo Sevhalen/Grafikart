@@ -4,9 +4,9 @@ class Personnage {
     
     const MAX_VIE = 100;
     
-    public $vie = 80;
-    public $atk = 20;
-    public $nom;
+    protected $vie = 80;
+    protected $atk = 20;
+    protected $nom;
     
     public function __construct($nom) {
         $this->nom = $nom;
