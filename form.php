@@ -1,19 +1,36 @@
 <?php
 
+/**
+ * Class Form
+ * Përmet de générer un formulaire rapidement et simplement
+ */
+
 class Form{
     
-    private $data;
-    private $surround = 'p';
+    
+    /**
+     * @var $data array Donnée utilisées par le formulaire
+     */
+    protected $data;
+    
+    /**
+     * @var string Tag utilisé pour entourer les champs
+     */
+    protected $surround = 'p';
     
     public function __construct($data = array()) {
         $this->data = $data;
     }
     
-    private function surround($html) {
-    return "<{$this->surround}>{$html}<{$this->surround}>";
+    /**
+     * @param $html string Code HTML à entourer
+     * @return string
+     */
+    protected function surround($html) {
+		return "<{$this->surround}>{$html}<{$this->surround}>";
     }
     
-    private function getValue($index) {
+    protected function getValue($index) {
         return isset($this->data[$index]) ? $this->data[$index] : null;
     }
     
