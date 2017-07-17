@@ -4,7 +4,7 @@ class BootstrapForm extends Form{
 	
 	
 	/**
-     * @param $html string Code HTML à entourer
+     * @param $html string Code HTML a entourer
      * @return string
      */
     protected function surround($html) {

@@ -9,12 +9,12 @@ class Form{
     
     
     /**
-     * @var $data array Donnée utilisées par le formulaire
+     * @var $data array Donnee utilisees par le formulaire
      */
     protected $data;
     
     /**
-     * @var string Tag utilisé pour entourer les champs
+     * @var string Tag utilise pour entourer les champs
      */
     protected $surround = 'p';
     
@@ -23,7 +23,7 @@ class Form{
     }
     
     /**
-     * @param $html string Code HTML à entourer
+     * @param $html string Code HTML a entourer
      * @return string
      */
     protected function surround($html) {
@@ -38,8 +38,12 @@ class Form{
         return $this->surround('<input type="text" name="'. $name . '" value="' . $this->getValue($name) . '"');
     }
     
+    /**
+     * @return string
+     */
+    
     public function submit() {
-        return $this->surround('<button type="submit">Envoyer</button>');
+        return $this->surround('<button type="submit" class="btn btn-primary">Envoyer</button>');
     }
     
 }
