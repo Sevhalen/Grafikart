@@ -1,5 +1,8 @@
 <?php
 
+namespace Tutoriel;
+
+
 class Personnage {
     
     const MAX_VIE = 100;

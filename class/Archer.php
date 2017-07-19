@@ -1,5 +1,7 @@
 <?php
 
+namespace Tutoriel;
+
 class Archer extends Personnage{
 	
 	
