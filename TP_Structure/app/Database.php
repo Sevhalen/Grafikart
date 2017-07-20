@@ -1,6 +1,6 @@
 <?php
 
-namespace App;
+namespace app;
 
 use \PDO;
 
@@ -29,10 +29,38 @@ class Database{
 		return $this->pdo;
 	}
 	
-	
-	public function query($statement){
+	/**
+	 * Retourne les lignes de la table article sous la forme d'une
+	 * classe que l'on defini nous-meme
+	 * @param string requete SQL
+	 * @param class nom de la classe avec laquelle on recupere les resultats de la requete
+	 */
+	public function query($statement, $class_name){
 		$req = $this->getPDO()->query($statement);
-		$datas = $req->fetchAll(PDO::FETCH_OBJ);
+		$datas = $req->fetchAll(PDO::FETCH_CLASS, $class_name);
+		
+		return $datas;
+	}
+	
+	
+	/**
+	 * Methode de preparation des requete SQL permettant d'eviter
+	 * les injections SQL
+	 * Utilise la methode 'prepare' de PDO
+	 * @param string Requete a preparer
+	 * @param array Attributs de la requete
+	 * @param class Classe selon laquelle on recupere les resultats de la requete
+	 */
+	public function prepare($statement, $attributes, $class_name, $one = false){
+		$req = $this->getPDO()->prepare($statement);
+		$req->execute($attributes);
+		$req->setFetchMode(PDO::FETCH_CLASS, $class_name);
+		
+		if($one){
+			$datas = $req->fetch();
+		} else {
+			$datas = $req->fetchAll();
+		}
 		
 		return $datas;
 	}

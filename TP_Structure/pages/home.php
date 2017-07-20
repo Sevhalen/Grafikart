@@ -1,10 +1,10 @@
 <ul>
 
-<?php foreach($db->query('SELECT * FROM articles') as $post): ?>
+<?php foreach($db->query('SELECT * FROM articles', 'app\table\Article') as $post): ?>
 
-	<h2><a href="<?php $post->url; ?>"><?= $post->titre; ?></a></h2>
+	<h2><a href="<?= $post->url; ?>"><?= $post->titre; ?></a></h2>
 	
-	<p><?php $post->extrait; ?></p>
+	<p><?= $post->extrait; ?></p>
 
 <?php endforeach; ?>
 
