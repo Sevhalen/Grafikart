@@ -2,13 +2,29 @@
 
 namespace app\table;
 
+use app\App;
+
 class Article{
+	
+	/**
+	 * Note perso : pas certain que get "Last" soit le bon terme
+	 * puisque l'on recupere les articles un par un dans l'ordre
+	 * et non seulement le dernier ...
+	 */
+	public static function getLast(){
+			return App::getDb()->query("
+				SELECT articles.id, articles.titre, articles.contenu, categories.titre as categorie
+				FROM articles
+				LEFT JOIN categories
+					ON categorie_id = categories.id
+			", __CLASS__);
+	}
 	
 	/**
 	 * Methode magique
 	 * Fonction permettant d'appeler automatiquement les methodes
 	 * correspondant aux proprietes appelees mais non-definies
-	 * @var string Propriete appelee
+	 * @param string Propriete appelee
 	 */
 	public function __get($key){
 		$method = 'get' . ucfirst($key);
