@@ -11,8 +11,8 @@ class Categorie{
 	public static function all(){
 		return App::getDb()->query("
 				SELECT *
-				FROM " . {self::$table} "
-			", __CLASS__);
+				FROM " . self::$table
+                                , __CLASS__);
 	}
 	
 }

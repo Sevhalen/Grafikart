@@ -24,7 +24,7 @@ class Article{
 	 * Methode magique
 	 * Fonction permettant d'appeler automatiquement les methodes
 	 * correspondant aux proprietes appelees mais non-definies
-	 * @param string Propriete appelee
+	 * @param string Proprietee appelee
 	 */
 	public function __get($key){
 		$method = 'get' . ucfirst($key);
